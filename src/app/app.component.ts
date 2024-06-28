@@ -4,6 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AppMainContainerComponent } from './components/app-main-container/app-main-container.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ import { AppMainContainerComponent } from './components/app-main-container/app-m
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     AppMainContainerComponent,
   ],
   templateUrl: './app.component.html',
