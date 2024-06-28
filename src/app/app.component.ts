@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,5 +19,10 @@ import { AppMainContainerComponent } from './components/app-main-container/app-m
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'app-dynamic-loading';
+  @ViewChild('container') container!: AppMainContainerComponent;
+
+  changeToScreen(screenName: string) {
+    this.container.sharedService.selectedComponent = screenName;
+    this.container.loadContent();
+  }
 }

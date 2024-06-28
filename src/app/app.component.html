@@ -1,12 +1,12 @@
 <main class="main">
   <mat-toolbar>
     <span class="example-spacer"></span>
-    <button>Screen 1</button>
-    <button>Screen 2</button>
-    <button>Screen 3</button>
+    <button (click)="changeToScreen('Screen1Component')">Screen 1</button>
+    <button (click)="changeToScreen('Screen2Component')">Screen 2</button>
+    <button (click)="changeToScreen('Screen3Component')">Screen 3</button>
   </mat-toolbar>
 
-  <app-main-container></app-main-container>
+  <app-main-container #container></app-main-container>
 </main>
 
 <router-outlet />

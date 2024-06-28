@@ -3,13 +3,14 @@ import {
   DYNAMIC_COMPONENT_ROUTES,
   IDynamicRoutes,
 } from '../common/dynamic-routes.manifest';
+import { NGXLogger } from 'ngx-logger';
 
 @Injectable()
 export class DynamicLoaderService {
   constructor(
     @Inject(DYNAMIC_COMPONENT_ROUTES)
     private dynamicRoutes: IDynamicRoutes[],
-    private injector: Injector
+    private logger: NGXLogger
   ) {}
 
   async loadComponent(componentId: string) {
@@ -21,6 +22,8 @@ export class DynamicLoaderService {
     }
 
     const Component = await loadedComponent.loadChildren;
+
+    this.logger.info(`Component ${componentId} loaded`);
 
     return Component[componentId];
   }

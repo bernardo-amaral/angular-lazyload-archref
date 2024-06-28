@@ -3,8 +3,13 @@ import {
   withHttpTransferCacheOptions,
 } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 import { routes } from './app.routes';
 import { dynamicRoutes } from './common/CustomRoutes';
@@ -16,6 +21,12 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(
       withHttpTransferCacheOptions({
         includePostRequests: true,
+      })
+    ),
+    importProvidersFrom(
+      LoggerModule.forRoot({
+        level: NgxLoggerLevel.DEBUG,
+        serverLogLevel: NgxLoggerLevel.DEBUG,
       })
     ),
     provideZoneChangeDetection({ eventCoalescing: true }),
